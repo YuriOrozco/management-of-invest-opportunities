@@ -2,7 +2,8 @@ const express = require('express');
 const sequelize = require('./db/db');
 //const user = require('./models/User');
 //const investment = require('./models/Investment');
-const routes = require('./routes/users.routes')
+const userRoutes = require('./routes/users.routes');
+const ssoRoutes = require('./routes/auth.routes');
 const PORT = 3001;
 
 async function main() {
@@ -13,7 +14,8 @@ async function main() {
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
     });
-    app.use(routes);
+    app.use(ssoRoutes);
+    app.use(userRoutes);
 
     //SEQUELIZE
     //trata de sincronizar con la base de datos
